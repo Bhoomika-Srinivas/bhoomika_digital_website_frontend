@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Menu, X, Search, ChevronDown, ArrowRight,
@@ -64,17 +64,10 @@ const PRODUCTS_MEGA: ProductCat[] = [
 // ── Component ──────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [scrolled, setScrolled]     = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
 
   return (
     <>
